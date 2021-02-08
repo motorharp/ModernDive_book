@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Bootstrapping and Confidence Intervals | Statistical Inference via Data Science</title>
   <meta name="description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Bootstrapping and Confidence Intervals | Statistical Inference via Data Science" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://moderndive.com/" />
-  <meta property="og:image" content="https://moderndive.com/images/logos/book_cover.png" />
+  <meta property="og:image" content="https://moderndive.com//images/logos/book_cover.png" />
   <meta property="og:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="github-repo" content="moderndive/ModernDive_book" />
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="Chapter 8 Bootstrapping and Confidence Intervals | Statistical Inference via Data Science" />
   <meta name="twitter:site" content="@ModernDive" />
   <meta name="twitter:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
-  <meta name="twitter:image" content="https://moderndive.com/images/logos/book_cover.png" />
+  <meta name="twitter:image" content="https://moderndive.com//images/logos/book_cover.png" />
 
 <meta name="author" content="Chester Ismay and Albert Y. Kim   Foreword by Kelly S. McConville" />
 
 
-<meta name="date" content="2021-02-07" />
+<meta name="date" content="2021-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
@@ -75,7 +77,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -87,11 +89,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -134,6 +138,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -851,7 +856,7 @@ FIGURE 8.10: Snapshot of shared spreadsheet of resampled pennies.
 <a class="sourceLine" id="cb244-4" data-line-number="4">resampled_means</a></code></pre></div>
 <pre><code># A tibble: 35 x 2
    name      mean_year
-   &lt;chr&gt;         &lt;dbl&gt;
+ * &lt;chr&gt;         &lt;dbl&gt;
  1 Arianna     1992.5 
  2 Artemis     1996.42
  3 Bea         1996.32
@@ -918,7 +923,7 @@ FIGURE 8.11: Distribution of 35 sample means from 35 resamples.
 <a class="sourceLine" id="cb251-2" data-line-number="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">resample_mean =</span> <span class="kw">mean</span>(year))</a></code></pre></div>
 <pre><code># A tibble: 1 x 2
   replicate resample_mean
-      &lt;int&gt;         &lt;dbl&gt;
+*     &lt;int&gt;         &lt;dbl&gt;
 1         1          1996</code></pre>
 <p>As we saw when we did our tactile resampling exercise, the resulting mean year is different than the mean year of our 50 originally sampled pennies of 1995.44.</p>
 <!--
@@ -958,7 +963,7 @@ to be printed to six in tibbles with `options(pillar.sigfig = 6)`.
 <a class="sourceLine" id="cb255-4" data-line-number="4">virtual_resampled_means</a></code></pre></div>
 <pre><code># A tibble: 35 x 2
    replicate mean_year
-       &lt;int&gt;     &lt;dbl&gt;
+ *     &lt;int&gt;     &lt;dbl&gt;
  1         1   1995.58
  2         2   1999.74
  3         3   1993.7 
@@ -1008,7 +1013,7 @@ FIGURE 8.13: Comparing distributions of means from resamples.
 <a class="sourceLine" id="cb259-5" data-line-number="5">virtual_resampled_means</a></code></pre></div>
 <pre><code># A tibble: 1,000 x 2
    replicate mean_year
-       &lt;int&gt;     &lt;dbl&gt;
+ *     &lt;int&gt;     &lt;dbl&gt;
  1         1   1992.6 
  2         2   1994.78
  3         3   1994.74
@@ -1611,7 +1616,7 @@ FIGURE 8.28: 100 SE-based 80% confidence intervals for <span class="math inline"
 </div>
 <div id="shorthand" class="section level3">
 <h3><span class="header-section-number">8.5.2</span> Precise and shorthand interpretation</h3>
-<p></p>
+
 <p>Let’s return our attention to 95% confidence intervals. The precise and mathematically correct interpretation of a 95% confidence interval is a little long-winded:</p>
 <blockquote>
 <p>Precise interpretation: If we repeated our sampling procedure a large number of times, we expect about 95% of the resulting confidence intervals to capture the value of the population parameter.</p>

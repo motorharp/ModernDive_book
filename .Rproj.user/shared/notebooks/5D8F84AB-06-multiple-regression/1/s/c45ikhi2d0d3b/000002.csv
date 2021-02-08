@@ -1,4 +1,0 @@
-"0","get_regression_points(model_2_interaction) %>% "
-"0","  summarize(var_y = var(average_sat_math), "
-"0","                      var_y_hat = var(average_sat_math_hat), "
-"0","                      var_residual = var(residual))"

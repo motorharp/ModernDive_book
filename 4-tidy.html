@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Data Importing and “Tidy” Data | Statistical Inference via Data Science</title>
   <meta name="description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Data Importing and “Tidy” Data | Statistical Inference via Data Science" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://moderndive.com/" />
-  <meta property="og:image" content="https://moderndive.com/images/logos/book_cover.png" />
+  <meta property="og:image" content="https://moderndive.com//images/logos/book_cover.png" />
   <meta property="og:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
   <meta name="github-repo" content="moderndive/ModernDive_book" />
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="Chapter 4 Data Importing and “Tidy” Data | Statistical Inference via Data Science" />
   <meta name="twitter:site" content="@ModernDive" />
   <meta name="twitter:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
-  <meta name="twitter:image" content="https://moderndive.com/images/logos/book_cover.png" />
+  <meta name="twitter:image" content="https://moderndive.com//images/logos/book_cover.png" />
 
 <meta name="author" content="Chester Ismay and Albert Y. Kim   Foreword by Kelly S. McConville" />
 
 
-<meta name="date" content="2021-02-07" />
+<meta name="date" content="2021-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
@@ -75,7 +77,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -87,11 +89,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -134,6 +138,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -1181,19 +1186,19 @@ FIGURE 4.8: <em>ModernDive</em> flowchart - on to Part II!
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-R-fivethirtyeight">
-<p>Kim, Albert Y., Chester Ismay, and Jennifer Chunn. 2020. <em>Fivethirtyeight: Data and Code Behind the Stories and Interactives at Fivethirtyeight</em>. <a href="https://github.com/rudeboybert/fivethirtyeight">https://github.com/rudeboybert/fivethirtyeight</a>.</p>
+<p>Kim, Albert Y., Chester Ismay, and Jennifer Chunn. 2020. <em>Fivethirtyeight: Data and Code Behind the Stories and Interactives at Fivethirtyeight</em>. <a href="https://github.com/rudeboybert/fivethirtyeight" class="uri">https://github.com/rudeboybert/fivethirtyeight</a>.</p>
 </div>
 <div id="ref-tidy">
-<p>Wickham, Hadley. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> Volume 59 (Issue 10). <a href="https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf">https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf</a>.</p>
+<p>Wickham, Hadley. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> Volume 59 (Issue 10). <a href="https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf" class="uri">https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf</a>.</p>
 </div>
 <div id="ref-R-nycflights13">
-<p>Wickham, Hadley. 2019a. <em>Nycflights13: Flights That Departed Nyc in 2013</em>. <a href="http://github.com/hadley/nycflights13">http://github.com/hadley/nycflights13</a>.</p>
+<p>Wickham, Hadley. 2019a. <em>Nycflights13: Flights That Departed Nyc in 2013</em>. <a href="http://github.com/hadley/nycflights13" class="uri">http://github.com/hadley/nycflights13</a>.</p>
 </div>
 <div id="ref-R-tidyr">
-<p>Wickham, Hadley. 2020. <em>Tidyr: Tidy Messy Data</em>. <a href="https://CRAN.R-project.org/package=tidyr">https://CRAN.R-project.org/package=tidyr</a>.</p>
+<p>Wickham, Hadley. 2020. <em>Tidyr: Tidy Messy Data</em>. <a href="https://CRAN.R-project.org/package=tidyr" class="uri">https://CRAN.R-project.org/package=tidyr</a>.</p>
 </div>
 <div id="ref-R-readr">
-<p>Wickham, Hadley, and Jim Hester. 2020. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.</p>
+<p>Wickham, Hadley, and Jim Hester. 2020. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr" class="uri">https://CRAN.R-project.org/package=readr</a>.</p>
 </div>
 </div>
             </section>
