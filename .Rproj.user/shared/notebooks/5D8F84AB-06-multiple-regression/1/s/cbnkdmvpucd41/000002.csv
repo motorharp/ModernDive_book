@@ -1,0 +1,3 @@
+"0","age_coef <- get_regression_table(score_model_parallel_slopes) %>%"
+"0","  filter(term == ""age"") %>%"
+"0","  pull(estimate)"

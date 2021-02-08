@@ -1,0 +1,2 @@
+"0","evals_ch6 <- evals %>%"
+"0","  select(ID, score, age, gender)"

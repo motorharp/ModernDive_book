@@ -1,0 +1,4 @@
+"0","library(ISLR)"
+"0","credit_ch6 <- Credit %>% as_tibble() %>% "
+"0","  select(ID, debt = Balance, credit_limit = Limit, "
+"0","         income = Income, credit_rating = Rating, age = Age)"

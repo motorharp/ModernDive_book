@@ -1,0 +1,5 @@
+"0","# Packages needed internally, but not in text:"
+"0","library(kableExtra)"
+"0","library(patchwork)"
+"0","library(gapminder)"
+"0","library(ISLR)"

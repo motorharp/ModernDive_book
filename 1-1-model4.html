@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1.1 One numerical and one categorical explanatory variable | Statistical Inference via Data Science</title>
+  <meta name="description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1.1 One numerical and one categorical explanatory variable | Statistical Inference via Data Science" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://moderndive.com/" />
+  <meta property="og:image" content="https://moderndive.com/images/logos/book_cover.png" />
+  <meta property="og:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
+  <meta name="github-repo" content="moderndive/ModernDive_book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1.1 One numerical and one categorical explanatory variable | Statistical Inference via Data Science" />
+  <meta name="twitter:site" content="@ModernDive" />
+  <meta name="twitter:description" content="An open-source and fully-reproducible electronic textbook for teaching statistical inference using tidyverse data science tools." />
+  <meta name="twitter:image" content="https://moderndive.com/images/logos/book_cover.png" />
+
+<meta name="author" content="Chester Ismay and Albert Y. Kim   Foreword by Kelly S. McConville" />
+
+
+<meta name="date" content="2021-02-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/logos/favicons/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="images/logos/favicons/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="1-multiple-regression.html"/>
+<link rel="next" href="1-2-model3.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89938436-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome to ModernDive</a></li>
+<li class="chapter" data-level="" data-path="foreword.html"><a href="foreword.html"><i class="fa fa-check"></i>Foreword</a></li>
+<li class="chapter" data-level="1" data-path="1-multiple-regression.html"><a href="1-multiple-regression.html"><i class="fa fa-check"></i><b>1</b> Multiple Regression</a><ul>
+<li class="chapter" data-level="" data-path="1-multiple-regression.html"><a href="1-multiple-regression.html#mult-reg-packages"><i class="fa fa-check"></i>Needed packages</a></li>
+<li class="chapter" data-level="1.1" data-path="1-1-model4.html"><a href="1-1-model4.html"><i class="fa fa-check"></i><b>1.1</b> One numerical and one categorical explanatory variable</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="1-1-model4.html"><a href="1-1-model4.html#model4EDA"><i class="fa fa-check"></i><b>1.1.1</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="1.1.2" data-path="1-1-model4.html"><a href="1-1-model4.html#model4interactiontable"><i class="fa fa-check"></i><b>1.1.2</b> Interaction model</a></li>
+<li class="chapter" data-level="1.1.3" data-path="1-1-model4.html"><a href="1-1-model4.html#model4table"><i class="fa fa-check"></i><b>1.1.3</b> Parallel slopes model</a></li>
+<li class="chapter" data-level="1.1.4" data-path="1-1-model4.html"><a href="1-1-model4.html#model4points"><i class="fa fa-check"></i><b>1.1.4</b> Observed/fitted values and residuals</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="1-2-model3.html"><a href="1-2-model3.html"><i class="fa fa-check"></i><b>1.2</b> Two numerical explanatory variables</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="1-2-model3.html"><a href="1-2-model3.html#model3EDA"><i class="fa fa-check"></i><b>1.2.1</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-2-model3.html"><a href="1-2-model3.html#model3table"><i class="fa fa-check"></i><b>1.2.2</b> Regression plane</a></li>
+<li class="chapter" data-level="1.2.3" data-path="1-2-model3.html"><a href="1-2-model3.html#model3points"><i class="fa fa-check"></i><b>1.2.3</b> Observed/fitted values and residuals</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="1-3-mult-reg-related-topics.html"><a href="1-3-mult-reg-related-topics.html"><i class="fa fa-check"></i><b>1.3</b> Related topics</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="1-3-mult-reg-related-topics.html"><a href="1-3-mult-reg-related-topics.html#model-selection"><i class="fa fa-check"></i><b>1.3.1</b> Model selection using visualizations</a></li>
+<li class="chapter" data-level="1.3.2" data-path="1-3-mult-reg-related-topics.html"><a href="1-3-mult-reg-related-topics.html#rsquared"><i class="fa fa-check"></i><b>1.3.2</b> Model selection using R-squared</a></li>
+<li class="chapter" data-level="1.3.3" data-path="1-3-mult-reg-related-topics.html"><a href="1-3-mult-reg-related-topics.html#correlationcoefficient2"><i class="fa fa-check"></i><b>1.3.3</b> Correlation coefficient</a></li>
+<li class="chapter" data-level="1.3.4" data-path="1-3-mult-reg-related-topics.html"><a href="1-3-mult-reg-related-topics.html#simpsonsparadox"><i class="fa fa-check"></i><b>1.3.4</b> Simpson’s Paradox</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="1-4-mult-reg-conclusion.html"><a href="1-4-mult-reg-conclusion.html"><i class="fa fa-check"></i><b>1.4</b> Conclusion</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="1-4-mult-reg-conclusion.html"><a href="1-4-mult-reg-conclusion.html#additional-resources"><i class="fa fa-check"></i><b>1.4.1</b> Additional resources</a></li>
+<li class="chapter" data-level="1.4.2" data-path="1-4-mult-reg-conclusion.html"><a href="1-4-mult-reg-conclusion.html#whats-to-come"><i class="fa fa-check"></i><b>1.4.2</b> What’s to come?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Inference via Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<html>
+<img src='https://moderndive.com/wide_format.png' alt="ModernDive">
+</html>
+<div id="model4" class="section level2">
+<h2><span class="header-section-number">1.1</span> One numerical and one categorical explanatory variable</h2>
+<p>Let’s revisit the instructor evaluation data from UT Austin we introduced in Section <a href="#model1"><strong>??</strong></a>. We studied the relationship between teaching evaluation scores as given by students and “beauty” scores. The variable teaching <code>score</code> was the numerical outcome variable <span class="math inline">\(y\)</span>, and the variable “beauty” score (<code>bty_avg</code>) was the numerical explanatory <span class="math inline">\(x\)</span> variable.</p>
+<p>In this section, we are going to consider a different model. Our outcome variable will still be teaching score, but we’ll now include two different explanatory variables: age and (binary) gender. Could it be that instructors who are older receive better teaching evaluations from students? Or could it instead be that younger instructors receive better evaluations? Are there differences in evaluations given by students for instructors of different genders? We’ll answer these questions by modeling the relationship between these variables using <em>multiple regression</em>, where we have:</p>
+<ol style="list-style-type: decimal">
+<li>A numerical outcome variable <span class="math inline">\(y\)</span>, the instructor’s teaching score, and</li>
+<li>Two explanatory variables:
+<ol style="list-style-type: decimal">
+<li>A numerical explanatory variable <span class="math inline">\(x_1\)</span>, the instructor’s age.</li>
+<li>A categorical explanatory variable <span class="math inline">\(x_2\)</span>, the instructor’s (binary) gender.</li>
+</ol></li>
+</ol>
+<p>It is important to note that at the time of this study due to then commonly held beliefs about gender, this variable was often recorded as a binary variable. While the results of a model that oversimplifies gender this way may be imperfect, we still found the results to be pertinent and relevant today.</p>
+<div id="model4EDA" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Exploratory data analysis</h3>
+<p>Recall that data on the 463 courses at UT Austin can be found in the <code>evals</code> data frame included in the <code>moderndive</code> package. However, to keep things simple, let’s <code>select()</code> only the subset of the variables we’ll consider in this chapter, and save this data in a new data frame called <code>evals_ch6</code>. Note that these are different than the variables chosen in Chapter <a href="#regression"><strong>??</strong></a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">evals_ch6 &lt;-<span class="st"> </span>evals <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(ID, score, age, gender)</a></code></pre></div>
+<p>Recall the three common steps in an exploratory data analysis we saw in Subsection <a href="#model1EDA"><strong>??</strong></a>:</p>
+<ol style="list-style-type: decimal">
+<li>Looking at the raw data values.</li>
+<li>Computing summary statistics.</li>
+<li>Creating data visualizations.</li>
+</ol>
+<p>Let’s first look at the raw data values by either looking at <code>evals_ch6</code> using RStudio’s spreadsheet viewer or by using the <code>glimpse()</code> function from the <code>dplyr</code> package:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">glimpse</span>(evals_ch6)</a></code></pre></div>
+<pre><code>Rows: 463
+Columns: 4
+$ ID     &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…
+$ score  &lt;dbl&gt; 4.7, 4.1, 3.9, 4.8, 4.6, 4.3, 2.8, 4.1, 3.4, 4.5, 3.8, 4.5, 4.…
+$ age    &lt;int&gt; 36, 36, 36, 36, 59, 59, 59, 51, 51, 40, 40, 40, 40, 40, 40, 40…
+$ gender &lt;fct&gt; female, female, female, female, male, male, male, male, male, …</code></pre>
+<p>Let’s also display a random sample of 5 rows of the 463 rows corresponding to different courses in Table <a href="1-1-model4.html#tab:model4-data-preview">1.1</a>. Remember due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">evals_ch6 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dt">size =</span> <span class="dv">5</span>)</a></code></pre></div>
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:model4-data-preview">TABLE 1.1: </span>A random sample of 5 out of the 463 courses at UT Austin
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+ID
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:right;">
+age
+</th>
+<th style="text-align:left;">
+gender
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+3.7
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+male
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:left;">
+female
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+4.8
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+male
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+434
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+male
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+330
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:left;">
+male
+</td>
+</tr>
+</tbody>
+</table>
+<p>Now that we’ve looked at the raw values in our <code>evals_ch6</code> data frame and got a sense of the data, let’s compute summary statistics. As we did in our exploratory data analyses in Sections <a href="#model1EDA"><strong>??</strong></a> and <a href="#model2EDA"><strong>??</strong></a> from the previous chapter, let’s use the <code>skim()</code> function from the <code>skimr</code> package, being sure to only <code>select()</code> the variables of interest in our model:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">evals_ch6 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(score, age, gender) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">skim</span>()</a></code></pre></div>
+<pre><code>Skim summary statistics
+ n obs: 463 
+ n variables: 3 
+
+── Variable type:factor 
+ variable missing complete   n n_unique                top_counts ordered
+   gender       0      463 463        2 mal: 268, fem: 195, NA: 0   FALSE
+
+── Variable type:integer 
+ variable missing complete   n  mean  sd p0 p25 p50 p75 p100
+      age       0      463 463 48.37 9.8 29  42  48  57   73
+
+── Variable type:numeric
+ variable missing complete   n mean   sd  p0 p25 p50 p75 p100
+    score       0      463 463 4.17 0.54 2.3 3.8 4.3 4.6    5</code></pre>
+<p>Observe that we have no missing data, that there are 268 courses taught by male instructors and 195 courses taught by female instructors, and that the average instructor age is 48.37. Recall that each row represents a particular course and that the same instructor often teaches more than one course. Therefore, the average age of the unique instructors may differ.</p>
+<p>Furthermore, let’s compute the correlation coefficient between our two numerical variables: <code>score</code> and <code>age</code>. Recall from Subsection <a href="#model1EDA"><strong>??</strong></a> that correlation coefficients only exist between numerical variables. We observe that they are “weakly negatively” correlated.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">evals_ch6 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span><span class="kw">get_correlation</span>(<span class="dt">formula =</span> score <span class="op">~</span><span class="st"> </span>age)</a></code></pre></div>
+<pre><code># A tibble: 1 x 1
+     cor
+   &lt;dbl&gt;
+1 -0.107</code></pre>
+<p>Let’s now perform the last of the three common steps in an exploratory data analysis: creating data visualizations. Given that the outcome variable <code>score</code> and explanatory variable <code>age</code> are both numerical, we’ll use a scatterplot to display their relationship. How can we incorporate the categorical variable <code>gender</code>, however? By <code>mapping</code> the variable <code>gender</code> to the <code>color</code> aesthetic, thereby creating a <em>colored</em> scatterplot. The following code is similar to the code that created the scatterplot of teaching score over “beauty” score in Figure <a href="#fig:numxplot1"><strong>??</strong></a>, but with <code>color = gender</code> added to the <code>aes()</code>thetic mapping.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">ggplot</span>(evals_ch6, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> score, <span class="dt">color =</span> gender)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Age&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Teaching Score&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;Gender&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:numxcatxplot1"></span>
+<img src="ModernDive_files/figure-html/numxcatxplot1-1.png" alt="Colored scatterplot of relationship of teaching and beauty scores." width="\textwidth" />
+<p class="caption">
+FIGURE 1.1: Colored scatterplot of relationship of teaching and beauty scores.
+</p>
+</div>
+<p>In the resulting Figure <a href="1-1-model4.html#fig:numxcatxplot1">1.1</a>, observe that <code>ggplot()</code> assigns a default in red/blue color scheme to the points and to the lines associated with the two levels of <code>gender</code>: <code>female</code> and <code>male</code>. Furthermore, the <code>geom_smooth(method = &quot;lm&quot;, se = FALSE)</code> layer automatically fits a different regression line for each group.</p>
+<p>We notice some interesting trends. First, there are almost no women faculty over the age of 60 as evidenced by lack of red dots above <span class="math inline">\(x\)</span> = 60. Second, while both regression lines are negatively sloped with age (i.e., older instructors tend to have lower scores), the slope for age for the female instructors is <em>more</em> negative. In other words, female instructors are paying a harsher penalty for advanced age than the male instructors.</p>
+</div>
+<div id="model4interactiontable" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Interaction model</h3>
+<p>Let’s now quantify the relationship of our outcome variable <span class="math inline">\(y\)</span> and the two explanatory variables using one type of multiple regression model known as an <em>interaction model</em>.  We’ll explain where the term “interaction” comes from at the end of this section.</p>
+<p>In particular, we’ll write out the equation of the two regression lines in Figure <a href="1-1-model4.html#fig:numxcatxplot1">1.1</a> using the values from a regression table. Before we do this, however, let’s go over a brief refresher of regression when you have a categorical explanatory variable <span class="math inline">\(x\)</span>.</p>
+<p>Recall in Subsection <a href="#model2table"><strong>??</strong></a> we fit a regression model for countries’ life expectancies as a function of which continent the country was in. In other words, we had a numerical outcome variable <span class="math inline">\(y\)</span> = <code>lifeExp</code> and a categorical explanatory variable <span class="math inline">\(x\)</span> = <code>continent</code> which had 5 levels: <code>Africa</code>, <code>Americas</code>, <code>Asia</code>, <code>Europe</code>, and <code>Oceania</code>. Let’s re-display the regression table you saw in Table <a href="#tab:catxplot4b"><strong>??</strong></a>:</p>
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-19">TABLE 1.2: </span>Regression table for life expectancy as a function of continent
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+std_error
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p_value
+</th>
+<th style="text-align:right;">
+lower_ci
+</th>
+<th style="text-align:right;">
+upper_ci
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+intercept
+</td>
+<td style="text-align:right;">
+54.8
+</td>
+<td style="text-align:right;">
+1.02
+</td>
+<td style="text-align:right;">
+53.45
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+52.8
+</td>
+<td style="text-align:right;">
+56.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+continentAmericas
+</td>
+<td style="text-align:right;">
+18.8
+</td>
+<td style="text-align:right;">
+1.80
+</td>
+<td style="text-align:right;">
+10.45
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+15.2
+</td>
+<td style="text-align:right;">
+22.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+continentAsia
+</td>
+<td style="text-align:right;">
+15.9
+</td>
+<td style="text-align:right;">
+1.65
+</td>
+<td style="text-align:right;">
+9.68
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12.7
+</td>
+<td style="text-align:right;">
+19.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+continentEurope
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+1.70
+</td>
+<td style="text-align:right;">
+13.47
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+19.5
+</td>
+<td style="text-align:right;">
+26.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+continentOceania
+</td>
+<td style="text-align:right;">
+25.9
+</td>
+<td style="text-align:right;">
+5.33
+</td>
+<td style="text-align:right;">
+4.86
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+15.4
+</td>
+<td style="text-align:right;">
+36.5
+</td>
+</tr>
+</tbody>
+</table>
+<p>Recall our interpretation of the <code>estimate</code> column. Since <code>Africa</code> was the “baseline for comparison” group, the <code>intercept</code> term corresponds to the mean life expectancy for all countries in Africa of 54.8 years. The other four values of <code>estimate</code> correspond to “offsets” relative to the baseline group. So, for example, the “offset” corresponding to the Americas is +18.8 as compared to the baseline for comparison group Africa. In other words, the average life expectancy for countries in the Americas is 18.8 years <em>higher</em>. Thus the mean life expectancy for all countries in the Americas is 54.8 + 18.8 = 73.6. The same interpretation holds for Asia, Europe, and Oceania.</p>
+<p>Going back to our multiple regression model for teaching <code>score</code> using <code>age</code> and <code>gender</code> in Figure <a href="1-1-model4.html#fig:numxcatxplot1">1.1</a>, we generate the regression table using the same two-step approach from Chapter <a href="#regression"><strong>??</strong></a>: we first “fit” the model using the <code>lm()</code> “linear model” function and then we apply the <code>get_regression_table()</code> function. This time, however, our model formula won’t be of the form <code>y ~ x</code>, but rather of the form <code>y ~ x1 * x2</code>. In other words, our two explanatory variables <code>x1</code> and <code>x2</code> are separated by a <code>*</code> sign:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># Fit regression model:</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">score_model_interaction &lt;-<span class="st"> </span><span class="kw">lm</span>(score <span class="op">~</span><span class="st"> </span>age <span class="op">*</span><span class="st"> </span>gender, <span class="dt">data =</span> evals_ch6)</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co"># Get regression table:</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="kw">get_regression_table</span>(score_model_interaction)</a></code></pre></div>
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:regtable-interaction">TABLE 1.3: </span>Regression table for interaction model
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+std_error
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p_value
+</th>
+<th style="text-align:right;">
+lower_ci
+</th>
+<th style="text-align:right;">
+upper_ci
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+intercept
+</td>
+<td style="text-align:right;">
+4.883
+</td>
+<td style="text-align:right;">
+0.205
+</td>
+<td style="text-align:right;">
+23.80
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+4.480
+</td>
+<td style="text-align:right;">
+5.286
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age
+</td>
+<td style="text-align:right;">
+-0.018
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+-3.92
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+-0.026
+</td>
+<td style="text-align:right;">
+-0.009
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gendermale
+</td>
+<td style="text-align:right;">
+-0.446
+</td>
+<td style="text-align:right;">
+0.265
+</td>
+<td style="text-align:right;">
+-1.68
+</td>
+<td style="text-align:right;">
+0.094
+</td>
+<td style="text-align:right;">
+-0.968
+</td>
+<td style="text-align:right;">
+0.076
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age:gendermale
+</td>
+<td style="text-align:right;">
+0.014
+</td>
+<td style="text-align:right;">
+0.006
+</td>
+<td style="text-align:right;">
+2.45
+</td>
+<td style="text-align:right;">
+0.015
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.024
+</td>
+</tr>
+</tbody>
+</table>
+<p>Looking at the regression table output in Table <a href="1-1-model4.html#tab:regtable-interaction">1.3</a>, there are four rows of values in the <code>estimate</code> column. While it is not immediately apparent, using these four values we can write out the equations of both lines in Figure <a href="1-1-model4.html#fig:numxcatxplot1">1.1</a>. First, since the word <code>female</code> comes alphabetically before <code>male</code>, female instructors are the “baseline for comparison” group. Thus, <code>intercept</code> is the intercept <em>for only the female instructors</em>.</p>
+<p>This holds similarly for <code>age</code>. It is the slope for age <em>for only the female instructors</em>. Thus, the red regression line in Figure <a href="1-1-model4.html#fig:numxcatxplot1">1.1</a> has an intercept of 4.883 and slope for age of -0.018. Remember that for this data, while the intercept has a mathematical interpretation, it has no <em>practical</em> interpretation since instructors can’t have zero age.</p>
+<p>What about the intercept and slope for age of the male instructors in the blue line in Figure <a href="1-1-model4.html#fig:numxcatxplot1">1.1</a>? This is where our notion of “offsets” comes into play once again.</p>
+<p>The value for <code>gendermale</code> of -0.446 is not the intercept for the male instructors, but rather the <em>offset</em> in intercept for male instructors relative to female instructors. The intercept for the male instructors is <code>intercept + gendermale</code> = 4.883 + (-0.446) = 4.883 - 0.446 = 4.437.</p>
+<p>Similarly, <code>age:gendermale</code> = 0.014 is not the slope for age for the male instructors, but rather the <em>offset</em> in slope for the male instructors. Therefore, the slope for age for the male instructors is <code>age + age:gendermale</code> <span class="math inline">\(= -0.018 + 0.014 = -0.004\)</span>. Thus, the blue regression line in Figure <a href="1-1-model4.html#fig:numxcatxplot1">1.1</a> has intercept 4.437 and slope for age of -0.004. Let’s summarize these values in Table <a href="1-1-model4.html#tab:interaction-summary">1.4</a> and focus on the two slopes for age:</p>
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:interaction-summary">TABLE 1.4: </span>Comparison of intercepts and slopes for interaction model
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:right;">
+Intercept
+</th>
+<th style="text-align:right;">
+Slope for age
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Female instructors
+</td>
+<td style="text-align:right;">
+4.883
+</td>
+<td style="text-align:right;">
+-0.018
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Male instructors
+</td>
+<td style="text-align:right;">
+4.437
+</td>
+<td style="text-align:right;">
+-0.004
+</td>
+</tr>
+</tbody>
+</table>
+<p>Since the slope for age for the female instructors was -0.018, it means that on average, a female instructor who is a year older would have a teaching score that is 0.018 units <strong>lower</strong>. For the male instructors, however, the corresponding associated decrease was on average only 0.004 units. While both slopes for age were negative, the slope for age for the female instructors is <em>more negative</em>. This is consistent with our observation from Figure <a href="1-1-model4.html#fig:numxcatxplot1">1.1</a>, that this model is suggesting that age impacts teaching scores for female instructors more than for male instructors.</p>
+<p>Let’s now write the equation for our regression lines, which we can use to compute our fitted values <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span>.</p>
+<!--
+Note: Even though markdown preview of the following LaTeX looks garbled, it
+comes out correct in the HTML output.
+-->
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= b_0 + b_{\text{age}} \cdot \text{age} + b_{\text{male}} \cdot \mathbb{1}_{\text{is male}}(x) + b_{\text{age,male}} \cdot \text{age} \cdot \mathbb{1}_{\text{is male}}(x)\\
+&amp;= 4.883 -0.018 \cdot \text{age} - 0.446 \cdot \mathbb{1}_{\text{is male}}(x) + 0.014 \cdot \text{age} \cdot \mathbb{1}_{\text{is male}}(x)
+\end{aligned}
+\]</span></p>
+<p>Whoa! That’s even more daunting than the equation you saw for the life expectancy as a function of continent in Subsection <a href="#model2table"><strong>??</strong></a>! However, if you recall what an “indicator function” does, the equation simplifies greatly. In the previous equation, we have one indicator function of interest:</p>
+<p><span class="math display">\[
+\mathbb{1}_{\text{is male}}(x) = \left\{
+\begin{array}{ll}
+1 &amp; \text{if } \text{instructor } x \text{ is male} \\
+0 &amp; \text{otherwise}\end{array}
+\right.
+\]</span></p>
+<p>Second, let’s match coefficients in the previous equation with values in the <code>estimate</code> column in our regression table in Table <a href="1-1-model4.html#tab:regtable-interaction">1.3</a>:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(b_0\)</span> is the <code>intercept</code> = 4.883 for the female instructors</li>
+<li><span class="math inline">\(b_{\text{age}}\)</span> is the slope for <code>age</code> = -0.018 for the female instructors</li>
+<li><span class="math inline">\(b_{\text{male}}\)</span> is the offset in intercept = -0.446 for the male instructors</li>
+<li><span class="math inline">\(b_{\text{age,male}}\)</span> is the offset in slope for age = 0.014 for the male instructors</li>
+</ol>
+<p>Let’s put this all together and compute the fitted value <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span> for female instructors. Since for female instructors <span class="math inline">\(\mathbb{1}_{\text{is male}}(x)\)</span> = 0, the previous equation becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= 4.883 - 0.018 \cdot \text{age} - 0.446 \cdot 0 + 0.014 \cdot \text{age} \cdot 0\\
+&amp;= 4.883 - 0.018 \cdot \text{age} - 0 + 0\\
+&amp;= 4.883 - 0.018 \cdot \text{age}\\
+\end{aligned}
+\]</span></p>
+<p>which is the equation of the red regression line in Figure <a href="1-1-model4.html#fig:numxcatxplot1">1.1</a> corresponding to the female instructors in Table <a href="1-1-model4.html#tab:interaction-summary">1.4</a>. Correspondingly, since for male instructors <span class="math inline">\(\mathbb{1}_{\text{is male}}(x)\)</span> = 1, the previous equation becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= 4.883 - 0.018 \cdot \text{age} - 0.446 + 0.014 \cdot \text{age}\\
+&amp;= (4.883 - 0.446) + (- 0.018 + 0.014) * \text{age}\\
+&amp;= 4.437 - 0.004 \cdot \text{age}\\
+\end{aligned}
+\]</span></p>
+<p>which is the equation of the blue regression line in Figure <a href="1-1-model4.html#fig:numxcatxplot1">1.1</a> corresponding to the male instructors in Table <a href="1-1-model4.html#tab:interaction-summary">1.4</a>.</p>
+<p>Phew! That was a lot of arithmetic! Don’t fret, however, this is as hard as modeling will get in this book. If you’re still a little unsure about using indicator functions and using categorical explanatory variables in a regression model, we <em>highly</em> suggest you re-read Subsection <a href="#model2table"><strong>??</strong></a>. This involves only a single categorical explanatory variable and thus is much simpler.</p>
+<p>Before we end this section, we explain why we refer to this type of model as an “interaction model.” The <span class="math inline">\(b_{\text{age,male}}\)</span> term in the equation for the fitted value <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> is what’s known in statistical modeling as an “interaction effect.” The interaction term corresponds to the <code>age:gendermale</code> = 0.014 in the final row of the regression table in Table <a href="1-1-model4.html#tab:regtable-interaction">1.3</a>.</p>
+<p>We say there is an interaction effect if the associated effect of one variable <em>depends on the value of another variable</em>. That is to say, the two variables are “interacting” with each other. Here, the associated effect of the variable age <em>depends</em> on the value of the other variable gender. The difference in slopes for age of +0.014 of male instructors relative to female instructors shows this. </p>
+<p>Another way of thinking about interaction effects on teaching scores is as follows. For a given instructor at UT Austin, there might be an associated effect of their age <em>by itself</em>, there might be an associated effect of their gender <em>by itself</em>, but when age and gender are considered <em>together</em> there might be an <em>additional effect</em> above and beyond the two individual effects.</p>
+</div>
+<div id="model4table" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> Parallel slopes model</h3>
+<p>When creating regression models with one numerical and one categorical explanatory variable, we are not just limited to interaction models as we just saw. Another type of model we can use is known as a <em>parallel slopes</em> model. Unlike interaction models where the regression lines can have different intercepts and different slopes, parallel slopes models still allow for different intercepts but <em>force</em> all lines to have the same slope. The resulting regression lines are thus parallel. Let’s visualize the best-fitting parallel slopes model to <code>evals_ch6</code>.</p>
+<p>Unfortunately, the <code>geom_smooth()</code> function in the <code>ggplot2</code> package does not have a convenient way to plot parallel slopes models. Evgeni Chasnovski thus created a special purpose function called <code>geom_parallel_slopes()</code> that is included in the <code>moderndive</code> package. You won’t find <code>geom_parallel_slopes()</code> in the <code>ggplot2</code> package, but rather the <code>moderndive</code> package. Thus, if you want to be able to use it, you will need to load both the <code>ggplot2</code> and <code>moderndive</code> packages. Using this function, let’s now plot the parallel slopes model for teaching score. Notice how the code is identical to the code that produced the visualization of the interaction model in Figure <a href="1-1-model4.html#fig:numxcatxplot1">1.1</a>, but now the <code>geom_smooth(method = &quot;lm&quot;, se = FALSE)</code> layer is replaced with <code>geom_parallel_slopes(se = FALSE)</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">ggplot</span>(evals_ch6, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> score, <span class="dt">color =</span> gender)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Age&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Teaching Score&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;Gender&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_parallel_slopes</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:numxcatx-parallel"></span>
+<img src="ModernDive_files/figure-html/numxcatx-parallel-1.png" alt="Parallel slopes model of score with age and gender." width="\textwidth" />
+<p class="caption">
+FIGURE 1.2: Parallel slopes model of score with age and gender.
+</p>
+</div>
+<p>Observe in Figure <a href="1-1-model4.html#fig:numxcatx-parallel">1.2</a> that we now have parallel lines corresponding to the female and male instructors, respectively: here they have the same negative slope. This is telling us that instructors who are older will tend to receive lower teaching scores than instructors who are younger. Furthermore, since the lines are parallel, the associated penalty for being older is assumed to be the same for both female and male instructors.</p>
+<p>However, observe also in Figure <a href="1-1-model4.html#fig:numxcatx-parallel">1.2</a> that these two lines have different intercepts as evidenced by the fact that the blue line corresponding to the male instructors is higher than the red line corresponding to the female instructors. This is telling us that irrespective of age, female instructors tended to receive lower teaching scores than male instructors.</p>
+<p>In order to obtain the precise numerical values of the two intercepts and the single common slope, we once again “fit” the model using the <code>lm()</code> “linear model” function and then apply the <code>get_regression_table()</code> function. However, unlike the interaction model which had a model formula of the form <code>y ~ x1 * x2</code>, our model formula is now of the form <code>y ~ x1 + x2</code>. In other words, our two explanatory variables <code>x1</code> and <code>x2</code> are separated by a <code>+</code> sign:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># Fit regression model:</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">score_model_parallel_slopes &lt;-<span class="st"> </span><span class="kw">lm</span>(score <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data =</span> evals_ch6)</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co"># Get regression table:</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="kw">get_regression_table</span>(score_model_parallel_slopes)</a></code></pre></div>
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:regtable-parallel-slopes">TABLE 1.5: </span>Regression table for parallel slopes model
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+std_error
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p_value
+</th>
+<th style="text-align:right;">
+lower_ci
+</th>
+<th style="text-align:right;">
+upper_ci
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+intercept
+</td>
+<td style="text-align:right;">
+4.484
+</td>
+<td style="text-align:right;">
+0.125
+</td>
+<td style="text-align:right;">
+35.79
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+4.238
+</td>
+<td style="text-align:right;">
+4.730
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age
+</td>
+<td style="text-align:right;">
+-0.009
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+-3.28
+</td>
+<td style="text-align:right;">
+0.001
+</td>
+<td style="text-align:right;">
+-0.014
+</td>
+<td style="text-align:right;">
+-0.003
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gendermale
+</td>
+<td style="text-align:right;">
+0.191
+</td>
+<td style="text-align:right;">
+0.052
+</td>
+<td style="text-align:right;">
+3.63
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+0.087
+</td>
+<td style="text-align:right;">
+0.294
+</td>
+</tr>
+</tbody>
+</table>
+<p>Similarly to the regression table for the interaction model from Table <a href="1-1-model4.html#tab:regtable-interaction">1.3</a>, we have an <code>intercept</code> term corresponding to the intercept for the “baseline for comparison” female instructor group and a <code>gendermale</code> term corresponding to the <em>offset</em> in intercept for the male instructors relative to female instructors. In other words, in Figure <a href="1-1-model4.html#fig:numxcatx-parallel">1.2</a> the red regression line corresponding to the female instructors has an intercept of 4.484 while the blue regression line corresponding to the male instructors has an intercept of 4.484 + 0.191 = 4.675. Once again, since there aren’t any instructors of age 0, the intercepts only have a mathematical interpretation but no practical one.</p>
+<p>Unlike in Table <a href="1-1-model4.html#tab:regtable-interaction">1.3</a>, however, we now only have a single slope for age of -0.009. This is because the model dictates that both the female and male instructors have a common slope for age.  This is telling us that an instructor who is a year older than another instructor received a teaching score that is on average 0.009 units <em>lower</em>. This penalty for being of advanced age applies equally to both female and male instructors.</p>
+<p>Let’s summarize these values in Table <a href="1-1-model4.html#tab:parallel-slopes-summary">1.6</a>, noting the different intercepts but common slopes:</p>
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:parallel-slopes-summary">TABLE 1.6: </span>Comparison of intercepts and slope for parallel slopes model
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:right;">
+Intercept
+</th>
+<th style="text-align:right;">
+Slope for age
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Female instructors
+</td>
+<td style="text-align:right;">
+4.484
+</td>
+<td style="text-align:right;">
+-0.009
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Male instructors
+</td>
+<td style="text-align:right;">
+4.675
+</td>
+<td style="text-align:right;">
+-0.009
+</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s now write the equation for our regression lines, which we can use to compute our fitted values <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span>.</p>
+<!--
+Note: Even though markdown preview of the following LaTeX looks garbled, it
+comes out correct in the HTML output.
+-->
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= b_0 + b_{\text{age}} \cdot \text{age} + b_{\text{male}} \cdot \mathbb{1}_{\text{is male}}(x)\\
+&amp;= 4.484 -0.009 \cdot \text{age} + 0.191 \cdot \mathbb{1}_{\text{is male}}(x) 
+\end{aligned}
+\]</span></p>
+<p>Let’s put this all together and compute the fitted value <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span> for female instructors. Since for female instructors the indicator function <span class="math inline">\(\mathbb{1}_{\text{is male}}(x)\)</span> = 0, the previous equation becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= 4.484 -0.009 \cdot \text{age} + 0.191 \cdot 0\\
+&amp;= 4.484 -0.009 \cdot \text{age}
+\end{aligned}
+\]</span></p>
+<p>which is the equation of the red regression line in Figure <a href="1-1-model4.html#fig:numxcatx-parallel">1.2</a> corresponding to the female instructors. Correspondingly, since for male instructors the indicator function <span class="math inline">\(\mathbb{1}_{\text{is male}}(x)\)</span> = 1, the previous equation becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= 4.484 -0.009 \cdot \text{age} + 0.191 \cdot 1\\
+&amp;= (4.484 + 0.191) - 0.009 \cdot \text{age}\\
+&amp;= 4.675 -0.009 \cdot \text{age}
+\end{aligned}
+\]</span></p>
+<p>which is the equation of the blue regression line in Figure <a href="1-1-model4.html#fig:numxcatx-parallel">1.2</a> corresponding to the male instructors.</p>
+<p>Great! We’ve considered both an interaction model and a parallel slopes model for our data. Let’s compare the visualizations for both models side-by-side in Figure <a href="1-1-model4.html#fig:numxcatx-comparison">1.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:numxcatx-comparison"></span>
+<img src="ModernDive_files/figure-html/numxcatx-comparison-1.png" alt="Comparison of interaction and parallel slopes models." width="\textwidth" />
+<p class="caption">
+FIGURE 1.3: Comparison of interaction and parallel slopes models.
+</p>
+</div>
+<p>At this point, you might be asking yourself: “Why would we ever use a parallel slopes model?”. Looking at the left-hand plot in Figure <a href="1-1-model4.html#fig:numxcatx-comparison">1.3</a>, the two lines definitely do not appear to be parallel, so why would we <em>force</em> them to be parallel? For this data, we agree! It can easily be argued that the interaction model on the left is more appropriate. However, in the upcoming Subsection <a href="1-3-mult-reg-related-topics.html#model-selection">1.3.1</a> on model selection, we’ll present an example where it can be argued that the case for a parallel slopes model might be stronger.</p>
+</div>
+<div id="model4points" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> Observed/fitted values and residuals</h3>
+<p>For brevity’s sake, in this section we’ll only compute the observed values, fitted values, and residuals for the interaction model which we saved in <code>score_model_interaction</code>. You’ll have an opportunity to study the corresponding values for the parallel slopes model in the upcoming <em>Learning check</em>.</p>
+<p>Say, you have an instructor who identifies as female and is 36 years old. What fitted value <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> would our model yield? Say, you have another instructor who identifies as male and is 59 years old. What would their fitted value <span class="math inline">\(\widehat{y}\)</span> be?</p>
+<p>We answer this question visually first for the female instructor by finding the intersection of the red regression line and the vertical line at <span class="math inline">\(x\)</span> = age = 36. We mark this value with a large red dot in Figure <a href="1-1-model4.html#fig:fitted-values">1.4</a>. Similarly, we can identify the fitted value <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> for the male instructor by finding the intersection of the blue regression line and the vertical line at <span class="math inline">\(x\)</span> = age = 59. We mark this value with a large blue dot in Figure <a href="1-1-model4.html#fig:fitted-values">1.4</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:fitted-values"></span>
+<img src="ModernDive_files/figure-html/fitted-values-1.png" alt="Fitted values for two new professors." width="\textwidth" />
+<p class="caption">
+FIGURE 1.4: Fitted values for two new professors.
+</p>
+</div>
+<p>What are these two values of <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> precisely? We can use the equations of the two regression lines we computed in Subsection <a href="1-1-model4.html#model4interactiontable">1.1.2</a>, which in turn were based on values from the regression table in Table <a href="1-1-model4.html#tab:regtable-interaction">1.3</a>:</p>
+<ul>
+<li>For all female instructors: <span class="math inline">\(\widehat{y} = \widehat{\text{score}} = 4.883 - 0.018 \cdot \text{age}\)</span></li>
+<li>For all male instructors: <span class="math inline">\(\widehat{y} = \widehat{\text{score}} = 4.437 - 0.004 \cdot \text{age}\)</span></li>
+</ul>
+<p>So our fitted values would be: <span class="math inline">\(4.883 - 0.018 \cdot 36 = 4.24\)</span> and <span class="math inline">\(4.437 - 0.004 \cdot 59 = 4.20\)</span>, respectively.</p>
+<p>Now what if we want the fitted values not just for these two instructors, but for the instructors of all 463 courses included in the <code>evals_ch6</code> data frame? Doing this by hand would be long and tedious! This is where the <code>get_regression_points()</code> function from the <code>moderndive</code> package can help: it will quickly automate the above calculations for all 463 courses. We present a preview of just the first 10 rows out of 463 in Table <a href="1-1-model4.html#tab:model4-points-table">1.7</a>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">regression_points &lt;-<span class="st"> </span><span class="kw">get_regression_points</span>(score_model_interaction)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">regression_points</a></code></pre></div>
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:model4-points-table">TABLE 1.7: </span>Regression points (First 10 out of 463 courses)
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+ID
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:right;">
+age
+</th>
+<th style="text-align:left;">
+gender
+</th>
+<th style="text-align:right;">
+score_hat
+</th>
+<th style="text-align:right;">
+residual
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+4.25
+</td>
+<td style="text-align:right;">
+0.448
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+4.25
+</td>
+<td style="text-align:right;">
+-0.152
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3.9
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+4.25
+</td>
+<td style="text-align:right;">
+-0.352
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4.8
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+4.25
+</td>
+<td style="text-align:right;">
+0.548
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+4.20
+</td>
+<td style="text-align:right;">
+0.399
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+4.3
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+4.20
+</td>
+<td style="text-align:right;">
+0.099
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+4.20
+</td>
+<td style="text-align:right;">
+-1.401
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+4.23
+</td>
+<td style="text-align:right;">
+-0.133
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+4.23
+</td>
+<td style="text-align:right;">
+-0.833
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+4.5
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+4.18
+</td>
+<td style="text-align:right;">
+0.318
+</td>
+</tr>
+</tbody>
+</table>
+<p>It turns out that the female instructor of age 36 taught the first four courses, while the male instructor taught the next 3. The resulting <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> fitted values are in the <code>score_hat</code> column. Furthermore, the <code>get_regression_points()</code> function also returns the residuals <span class="math inline">\(y-\widehat{y}\)</span>. Notice, for example, the first and fourth courses the female instructor of age 36 taught had positive residuals, indicating that the actual teaching scores they received from students were greater than their fitted score of 4.25. On the other hand, the second and third courses this instructor taught had negative residuals, indicating that the actual teaching scores they received from students were less than 4.25.</p>
+<div class="learncheck">
+<p>
+<strong><em>Learning check</em></strong>
+</p>
+</div>
+<p><strong>(LC6.1)</strong> Compute the observed values, fitted values, and residuals not for the interaction model as we just did, but rather for the parallel slopes model we saved in <code>score_model_parallel_slopes</code>.</p>
+<div class="learncheck">
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="1-multiple-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="1-2-model3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/moderndive/moderndive_book/edit/master/06-multiple-regression.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
