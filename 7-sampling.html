@@ -608,8 +608,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>As well as the more advanced <code>purrr</code>, <code>tibble</code>, <code>stringr</code>, and <code>forcats</code> packages</li>
 </ul>
 <p>If needed, read Section <a href="1-getting-started.html#packages">1.3</a> for information on how to install and load R packages.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb216-2" data-line-number="2"><span class="kw">library</span>(moderndive)</a></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb221-2" data-line-number="2"><span class="kw">library</span>(moderndive)</a></code></pre></div>
 </div>
 <div id="sampling-activity" class="section level2">
 <h2><span class="header-section-number">7.1</span> Sampling bowl activity</h2>
@@ -682,7 +682,7 @@ FIGURE 7.6: Hand-drawn histogram of first 10 out of 33 proportions.
 <li>The shape of this distribution is somewhat bell-shaped.</li>
 </ul>
 <p>Let’s construct this same hand-drawn histogram in R using your data visualization skills that you honed in Chapter <a href="2-viz.html#viz">2</a>. We saved our 33 groups of friends’ results in the <code>tactile_prop_red</code> data frame included in the <code>moderndive</code> package. Run the following to display the first 10 of 33 rows:</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">tactile_prop_red</a></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1">tactile_prop_red</a></code></pre></div>
 <pre><code># A tibble: 33 x 4
    group            replicate red_balls prop_red
    &lt;chr&gt;                &lt;int&gt;     &lt;int&gt;    &lt;dbl&gt;
@@ -699,10 +699,10 @@ FIGURE 7.6: Hand-drawn histogram of first 10 out of 33 proportions.
 # … with 23 more rows</code></pre>
 <p>Observe for each <code>group</code> that we have their names, the number of <code>red_balls</code> they obtained, and the corresponding proportion out of 50 balls that were red named <code>prop_red</code>. We also have a <code>replicate</code> variable enumerating each of the 33 groups. We chose this name because each row can be viewed as one instance of a replicated (in other words repeated) activity: using the shovel to remove 50 balls and computing the proportion of those balls that are red.</p>
 <p>Let’s visualize the distribution of these 33 proportions using <code>geom_histogram()</code> with <code>binwidth = 0.05</code> in Figure <a href="7-sampling.html#fig:samplingdistribution-tactile">7.7</a>. This is a computerized and complete version of the partially completed hand-drawn histogram you saw in Figure <a href="7-sampling.html#fig:sampling-exercise-5">7.6</a>. Note that setting <code>boundary = 0.4</code> indicates that we want a binning scheme such that one of the bins’ boundary is at 0.4. This helps us to more closely align this histogram with the hand-drawn histogram in Figure <a href="7-sampling.html#fig:sampling-exercise-5">7.6</a>.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="kw">ggplot</span>(tactile_prop_red, <span class="kw">aes</span>(<span class="dt">x =</span> prop_red)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb219-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">0.05</span>, <span class="dt">boundary =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb219-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Proportion of 50 balls that were red&quot;</span>, </a>
-<a class="sourceLine" id="cb219-4" data-line-number="4">       <span class="dt">title =</span> <span class="st">&quot;Distribution of 33 proportions red&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1"><span class="kw">ggplot</span>(tactile_prop_red, <span class="kw">aes</span>(<span class="dt">x =</span> prop_red)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb224-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">0.05</span>, <span class="dt">boundary =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb224-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Proportion of 50 balls that were red&quot;</span>, </a>
+<a class="sourceLine" id="cb224-4" data-line-number="4">       <span class="dt">title =</span> <span class="st">&quot;Distribution of 33 proportions red&quot;</span>) </a></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:samplingdistribution-tactile"></span>
 <img src="ModernDive_files/figure-html/samplingdistribution-tactile-1.png" alt="Distribution of 33 proportions based on 33 samples of size 50." width="\textwidth" />
 <p class="caption">
@@ -740,7 +740,7 @@ FIGURE 7.7: Distribution of 33 proportions based on 33 samples of size 50.
 <div id="using-the-virtual-shovel-once" class="section level3">
 <h3><span class="header-section-number">7.2.1</span> Using the virtual shovel once</h3>
 <p>Let’s start by performing the virtual analog of the tactile sampling exercise we performed in Section <a href="7-sampling.html#sampling-activity">7.1</a>. We first need a virtual analog of the bowl seen in Figure <a href="7-sampling.html#fig:sampling-exercise-1">7.1</a>. To this end, we included a data frame named <code>bowl</code> in the <code>moderndive</code> package. The rows of <code>bowl</code> correspond exactly with the contents of the actual bowl.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">bowl</a></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">bowl</a></code></pre></div>
 <pre><code># A tibble: 2,400 x 2
    ball_ID color
      &lt;int&gt; &lt;chr&gt;
@@ -1109,55 +1109,55 @@ FIGURE 7.8: Three shovels to extract three different sample sizes.
 <li>Visualize the distribution of these 1000 proportions red using a histogram.</li>
 </ol>
 <p>Run each of the following code segments individually and then compare the three resulting histograms.</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1"><span class="co"># Segment 1: sample size = 25 ------------------------------</span></a>
-<a class="sourceLine" id="cb222-2" data-line-number="2"><span class="co"># 1.a) Virtually use shovel 1000 times</span></a>
-<a class="sourceLine" id="cb222-3" data-line-number="3">virtual_samples_<span class="dv">25</span> &lt;-<span class="st"> </span>bowl <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-4" data-line-number="4"><span class="st">  </span><span class="kw">rep_sample_n</span>(<span class="dt">size =</span> <span class="dv">25</span>, <span class="dt">reps =</span> <span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb222-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb222-6" data-line-number="6"><span class="co"># 1.b) Compute resulting 1000 replicates of proportion red</span></a>
-<a class="sourceLine" id="cb222-7" data-line-number="7">virtual_prop_red_<span class="dv">25</span> &lt;-<span class="st"> </span>virtual_samples_<span class="dv">25</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-8" data-line-number="8"><span class="st">  </span><span class="kw">group_by</span>(replicate) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-9" data-line-number="9"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">red =</span> <span class="kw">sum</span>(color <span class="op">==</span><span class="st"> &quot;red&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop_red =</span> red <span class="op">/</span><span class="st"> </span><span class="dv">25</span>)</a>
-<a class="sourceLine" id="cb222-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb222-12" data-line-number="12"><span class="co"># 1.c) Plot distribution via a histogram</span></a>
-<a class="sourceLine" id="cb222-13" data-line-number="13"><span class="kw">ggplot</span>(virtual_prop_red_<span class="dv">25</span>, <span class="kw">aes</span>(<span class="dt">x =</span> prop_red)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb222-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">0.05</span>, <span class="dt">boundary =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb222-15" data-line-number="15"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Proportion of 25 balls that were red&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;25&quot;</span>) </a>
-<a class="sourceLine" id="cb222-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb222-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb222-18" data-line-number="18"><span class="co"># Segment 2: sample size = 50 ------------------------------</span></a>
-<a class="sourceLine" id="cb222-19" data-line-number="19"><span class="co"># 2.a) Virtually use shovel 1000 times</span></a>
-<a class="sourceLine" id="cb222-20" data-line-number="20">virtual_samples_<span class="dv">50</span> &lt;-<span class="st"> </span>bowl <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-21" data-line-number="21"><span class="st">  </span><span class="kw">rep_sample_n</span>(<span class="dt">size =</span> <span class="dv">50</span>, <span class="dt">reps =</span> <span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb222-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb222-23" data-line-number="23"><span class="co"># 2.b) Compute resulting 1000 replicates of proportion red</span></a>
-<a class="sourceLine" id="cb222-24" data-line-number="24">virtual_prop_red_<span class="dv">50</span> &lt;-<span class="st"> </span>virtual_samples_<span class="dv">50</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-25" data-line-number="25"><span class="st">  </span><span class="kw">group_by</span>(replicate) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-26" data-line-number="26"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">red =</span> <span class="kw">sum</span>(color <span class="op">==</span><span class="st"> &quot;red&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-27" data-line-number="27"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop_red =</span> red <span class="op">/</span><span class="st"> </span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb222-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb222-29" data-line-number="29"><span class="co"># 2.c) Plot distribution via a histogram</span></a>
-<a class="sourceLine" id="cb222-30" data-line-number="30"><span class="kw">ggplot</span>(virtual_prop_red_<span class="dv">50</span>, <span class="kw">aes</span>(<span class="dt">x =</span> prop_red)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb222-31" data-line-number="31"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">0.05</span>, <span class="dt">boundary =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb222-32" data-line-number="32"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Proportion of 50 balls that were red&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;50&quot;</span>)  </a>
-<a class="sourceLine" id="cb222-33" data-line-number="33"></a>
-<a class="sourceLine" id="cb222-34" data-line-number="34"></a>
-<a class="sourceLine" id="cb222-35" data-line-number="35"><span class="co"># Segment 3: sample size = 100 ------------------------------</span></a>
-<a class="sourceLine" id="cb222-36" data-line-number="36"><span class="co"># 3.a) Virtually using shovel with 100 slots 1000 times</span></a>
-<a class="sourceLine" id="cb222-37" data-line-number="37">virtual_samples_<span class="dv">100</span> &lt;-<span class="st"> </span>bowl <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-38" data-line-number="38"><span class="st">  </span><span class="kw">rep_sample_n</span>(<span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">reps =</span> <span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb222-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb222-40" data-line-number="40"><span class="co"># 3.b) Compute resulting 1000 replicates of proportion red</span></a>
-<a class="sourceLine" id="cb222-41" data-line-number="41">virtual_prop_red_<span class="dv">100</span> &lt;-<span class="st"> </span>virtual_samples_<span class="dv">100</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-42" data-line-number="42"><span class="st">  </span><span class="kw">group_by</span>(replicate) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-43" data-line-number="43"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">red =</span> <span class="kw">sum</span>(color <span class="op">==</span><span class="st"> &quot;red&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb222-44" data-line-number="44"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop_red =</span> red <span class="op">/</span><span class="st"> </span><span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb222-45" data-line-number="45"></a>
-<a class="sourceLine" id="cb222-46" data-line-number="46"><span class="co"># 3.c) Plot distribution via a histogram</span></a>
-<a class="sourceLine" id="cb222-47" data-line-number="47"><span class="kw">ggplot</span>(virtual_prop_red_<span class="dv">100</span>, <span class="kw">aes</span>(<span class="dt">x =</span> prop_red)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb222-48" data-line-number="48"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">0.05</span>, <span class="dt">boundary =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb222-49" data-line-number="49"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Proportion of 100 balls that were red&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;100&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1"><span class="co"># Segment 1: sample size = 25 ------------------------------</span></a>
+<a class="sourceLine" id="cb227-2" data-line-number="2"><span class="co"># 1.a) Virtually use shovel 1000 times</span></a>
+<a class="sourceLine" id="cb227-3" data-line-number="3">virtual_samples_<span class="dv">25</span> &lt;-<span class="st"> </span>bowl <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-4" data-line-number="4"><span class="st">  </span><span class="kw">rep_sample_n</span>(<span class="dt">size =</span> <span class="dv">25</span>, <span class="dt">reps =</span> <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb227-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb227-6" data-line-number="6"><span class="co"># 1.b) Compute resulting 1000 replicates of proportion red</span></a>
+<a class="sourceLine" id="cb227-7" data-line-number="7">virtual_prop_red_<span class="dv">25</span> &lt;-<span class="st"> </span>virtual_samples_<span class="dv">25</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-8" data-line-number="8"><span class="st">  </span><span class="kw">group_by</span>(replicate) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-9" data-line-number="9"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">red =</span> <span class="kw">sum</span>(color <span class="op">==</span><span class="st"> &quot;red&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop_red =</span> red <span class="op">/</span><span class="st"> </span><span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb227-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb227-12" data-line-number="12"><span class="co"># 1.c) Plot distribution via a histogram</span></a>
+<a class="sourceLine" id="cb227-13" data-line-number="13"><span class="kw">ggplot</span>(virtual_prop_red_<span class="dv">25</span>, <span class="kw">aes</span>(<span class="dt">x =</span> prop_red)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb227-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">0.05</span>, <span class="dt">boundary =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb227-15" data-line-number="15"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Proportion of 25 balls that were red&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;25&quot;</span>) </a>
+<a class="sourceLine" id="cb227-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb227-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb227-18" data-line-number="18"><span class="co"># Segment 2: sample size = 50 ------------------------------</span></a>
+<a class="sourceLine" id="cb227-19" data-line-number="19"><span class="co"># 2.a) Virtually use shovel 1000 times</span></a>
+<a class="sourceLine" id="cb227-20" data-line-number="20">virtual_samples_<span class="dv">50</span> &lt;-<span class="st"> </span>bowl <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-21" data-line-number="21"><span class="st">  </span><span class="kw">rep_sample_n</span>(<span class="dt">size =</span> <span class="dv">50</span>, <span class="dt">reps =</span> <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb227-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb227-23" data-line-number="23"><span class="co"># 2.b) Compute resulting 1000 replicates of proportion red</span></a>
+<a class="sourceLine" id="cb227-24" data-line-number="24">virtual_prop_red_<span class="dv">50</span> &lt;-<span class="st"> </span>virtual_samples_<span class="dv">50</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-25" data-line-number="25"><span class="st">  </span><span class="kw">group_by</span>(replicate) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-26" data-line-number="26"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">red =</span> <span class="kw">sum</span>(color <span class="op">==</span><span class="st"> &quot;red&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-27" data-line-number="27"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop_red =</span> red <span class="op">/</span><span class="st"> </span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb227-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb227-29" data-line-number="29"><span class="co"># 2.c) Plot distribution via a histogram</span></a>
+<a class="sourceLine" id="cb227-30" data-line-number="30"><span class="kw">ggplot</span>(virtual_prop_red_<span class="dv">50</span>, <span class="kw">aes</span>(<span class="dt">x =</span> prop_red)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb227-31" data-line-number="31"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">0.05</span>, <span class="dt">boundary =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb227-32" data-line-number="32"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Proportion of 50 balls that were red&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;50&quot;</span>)  </a>
+<a class="sourceLine" id="cb227-33" data-line-number="33"></a>
+<a class="sourceLine" id="cb227-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb227-35" data-line-number="35"><span class="co"># Segment 3: sample size = 100 ------------------------------</span></a>
+<a class="sourceLine" id="cb227-36" data-line-number="36"><span class="co"># 3.a) Virtually using shovel with 100 slots 1000 times</span></a>
+<a class="sourceLine" id="cb227-37" data-line-number="37">virtual_samples_<span class="dv">100</span> &lt;-<span class="st"> </span>bowl <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-38" data-line-number="38"><span class="st">  </span><span class="kw">rep_sample_n</span>(<span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">reps =</span> <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb227-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb227-40" data-line-number="40"><span class="co"># 3.b) Compute resulting 1000 replicates of proportion red</span></a>
+<a class="sourceLine" id="cb227-41" data-line-number="41">virtual_prop_red_<span class="dv">100</span> &lt;-<span class="st"> </span>virtual_samples_<span class="dv">100</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-42" data-line-number="42"><span class="st">  </span><span class="kw">group_by</span>(replicate) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-43" data-line-number="43"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">red =</span> <span class="kw">sum</span>(color <span class="op">==</span><span class="st"> &quot;red&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-44" data-line-number="44"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop_red =</span> red <span class="op">/</span><span class="st"> </span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb227-45" data-line-number="45"></a>
+<a class="sourceLine" id="cb227-46" data-line-number="46"><span class="co"># 3.c) Plot distribution via a histogram</span></a>
+<a class="sourceLine" id="cb227-47" data-line-number="47"><span class="kw">ggplot</span>(virtual_prop_red_<span class="dv">100</span>, <span class="kw">aes</span>(<span class="dt">x =</span> prop_red)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb227-48" data-line-number="48"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">0.05</span>, <span class="dt">boundary =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb227-49" data-line-number="49"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Proportion of 100 balls that were red&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;100&quot;</span>) </a></code></pre></div>
 <p>For easy comparison, we present the three resulting histograms in a single row with matching x and y axes in Figure <a href="7-sampling.html#fig:comparing-sampling-distributions">7.9</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:comparing-sampling-distributions"></span>
 <img src="ModernDive_files/figure-html/comparing-sampling-distributions-1.png" alt="Comparing the distributions of proportion red for different sample sizes." width="\textwidth" />
@@ -1167,17 +1167,17 @@ FIGURE 7.9: Comparing the distributions of proportion red for different sample s
 </div>
 <p>Observe that as the sample size increases, the variation of the 1000 replicates of the proportion of red decreases. In other words, as the sample size increases, there are fewer differences due to sampling variation and the distribution centers more tightly around the same value. Eyeballing Figure <a href="7-sampling.html#fig:comparing-sampling-distributions">7.9</a>, all three histograms appear to center around roughly 40%.</p>
 <p>We can be numerically explicit about the amount of variation in our three sets of 1000 values of <code>prop_red</code> using the  <em>standard deviation</em>. A standard deviation is a summary statistic that measures the amount of variation within a numerical variable (see Appendix <a href="A-appendixA.html#appendix-stat-terms">A.1</a> for a brief discussion on the properties of the standard deviation). For all three sample sizes, let’s compute the standard deviation of the 1000 proportions red by running the following data wrangling code that uses the <code>sd()</code> summary function.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="co"># n = 25</span></a>
-<a class="sourceLine" id="cb223-2" data-line-number="2">virtual_prop_red_<span class="dv">25</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb223-3" data-line-number="3"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">sd =</span> <span class="kw">sd</span>(prop_red))</a>
-<a class="sourceLine" id="cb223-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb223-5" data-line-number="5"><span class="co"># n = 50</span></a>
-<a class="sourceLine" id="cb223-6" data-line-number="6">virtual_prop_red_<span class="dv">50</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb223-7" data-line-number="7"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">sd =</span> <span class="kw">sd</span>(prop_red))</a>
-<a class="sourceLine" id="cb223-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb223-9" data-line-number="9"><span class="co"># n = 100</span></a>
-<a class="sourceLine" id="cb223-10" data-line-number="10">virtual_prop_red_<span class="dv">100</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb223-11" data-line-number="11"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">sd =</span> <span class="kw">sd</span>(prop_red))</a></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="co"># n = 25</span></a>
+<a class="sourceLine" id="cb228-2" data-line-number="2">virtual_prop_red_<span class="dv">25</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb228-3" data-line-number="3"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">sd =</span> <span class="kw">sd</span>(prop_red))</a>
+<a class="sourceLine" id="cb228-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb228-5" data-line-number="5"><span class="co"># n = 50</span></a>
+<a class="sourceLine" id="cb228-6" data-line-number="6">virtual_prop_red_<span class="dv">50</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb228-7" data-line-number="7"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">sd =</span> <span class="kw">sd</span>(prop_red))</a>
+<a class="sourceLine" id="cb228-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb228-9" data-line-number="9"><span class="co"># n = 100</span></a>
+<a class="sourceLine" id="cb228-10" data-line-number="10">virtual_prop_red_<span class="dv">100</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb228-11" data-line-number="11"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">sd =</span> <span class="kw">sd</span>(prop_red))</a></code></pre></div>
 <p>Let’s compare these three measures of distributional variation in Table <a href="7-sampling.html#tab:comparing-n">7.1</a>.</p>
 <table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -1262,7 +1262,7 @@ Standard deviation of proportions red
 <li>A <strong>census</strong> is an exhaustive enumeration or counting of all <span class="math inline">\(N\)</span> individuals in the population. We do this in order to compute the population parameter’s value <em>exactly</em>. Of note is that as the number <span class="math inline">\(N\)</span> of individuals in our population increases, conducting a census gets more expensive (in terms of time, energy, and money).</li>
 </ol>
 <p>So in our sampling activities, the <strong>population</strong> is the collection of <span class="math inline">\(N\)</span> = 2400 identically sized red and white balls in the bowl shown in Figure <a href="7-sampling.html#fig:sampling-exercise-1">7.1</a>. Recall that we also represented the bowl “virtually” in the data frame <code>bowl</code>:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">bowl</a></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1">bowl</a></code></pre></div>
 <pre><code># A tibble: 2,400 x 2
    ball_ID color
      &lt;int&gt; &lt;chr&gt;
@@ -1281,8 +1281,8 @@ Standard deviation of proportions red
 <p>In order to compute this population proportion <span class="math inline">\(p\)</span> exactly, we need to first conduct a <strong>census</strong> by going through all <span class="math inline">\(N\)</span> = 2400 and counting the number that are red. We then divide this count by 2400 to obtain the proportion red.</p>
 <p>You might be now asking yourself: “Wait. I understand that performing a census on the actual bowl would take a long time. But can’t we conduct a ‘virtual’ census using the virtual bowl?” You are absolutely correct! In fact when the authors of this book created the <code>bowl</code> data frame, they made its contents match the contents of actual bowl not by doing a census, but by reading the contents written on the box the bowl came in!</p>
 <p>Let’s conduct this “virtual” census by using the same <code>dplyr</code> verbs you used earlier to count the number of balls that are red:</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1">bowl <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb226-2" data-line-number="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">red =</span> <span class="kw">sum</span>(color <span class="op">==</span><span class="st"> &quot;red&quot;</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1">bowl <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb231-2" data-line-number="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">red =</span> <span class="kw">sum</span>(color <span class="op">==</span><span class="st"> &quot;red&quot;</span>)) </a></code></pre></div>
 <pre><code># A tibble: 1 x 1
     red
   &lt;int&gt;
@@ -1300,9 +1300,9 @@ Standard deviation of proportions red
 <li>A <strong>point estimate</strong>, also known as a <strong>sample statistic</strong>, is a summary statistic computed from a sample that <em>estimates</em> the unknown population parameter.</li>
 </ol>
 <p>So previously we conducted <strong>sampling</strong> using a shovel with 50 slots to extract samples of size <span class="math inline">\(n\)</span> = 50. To perform the virtual analog of this sampling, recall that we used the <code>rep_sample_n()</code> function as follows:</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">virtual_shovel &lt;-<span class="st"> </span>bowl <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb228-2" data-line-number="2"><span class="st">  </span><span class="kw">rep_sample_n</span>(<span class="dt">size =</span> <span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb228-3" data-line-number="3">virtual_shovel</a></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">virtual_shovel &lt;-<span class="st"> </span>bowl <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb233-2" data-line-number="2"><span class="st">  </span><span class="kw">rep_sample_n</span>(<span class="dt">size =</span> <span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb233-3" data-line-number="3">virtual_shovel</a></code></pre></div>
 <pre><code># A tibble: 50 x 3
 # Groups:   replicate [1]
    replicate ball_ID color
@@ -1319,9 +1319,9 @@ Standard deviation of proportions red
 10         1    1485 white
 # … with 40 more rows</code></pre>
 <p>Using the sample of 50 balls contained in <code>virtual_shovel</code>, we generated an estimate of the proportion of the bowl’s balls that are red <code>prop_red</code></p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1">virtual_shovel <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb230-2" data-line-number="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">num_red =</span> <span class="kw">sum</span>(color <span class="op">==</span><span class="st"> &quot;red&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb230-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop_red =</span> num_red <span class="op">/</span><span class="st"> </span><span class="dv">50</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">virtual_shovel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb235-2" data-line-number="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">num_red =</span> <span class="kw">sum</span>(color <span class="op">==</span><span class="st"> &quot;red&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb235-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop_red =</span> num_red <span class="op">/</span><span class="st"> </span><span class="dv">50</span>)</a></code></pre></div>
 <pre><code># A tibble: 1 x 3
   replicate num_red prop_red
       &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;
